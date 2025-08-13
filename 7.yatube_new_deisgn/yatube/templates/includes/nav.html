@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark ">
+  <a class="navbar-brand" href="/"><span style="color:red">Ya</span>tube</a>
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        {% spaceless %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'profile' request.user.username %}">
+            Пользователь: <span>{{ user.username }}</span>
+          </a>
+        </li>
+        {% endspaceless %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'new_post' %}">Новая запись</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'password_change' %}">Изменить пароль</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+        </li>
+      {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">Войти</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'signup' %}">Регистрация</a>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
